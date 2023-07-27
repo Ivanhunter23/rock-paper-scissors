@@ -9,3 +9,38 @@ function getComputerChoice(){
         return "Scissors";
     }
 }
+function playRound(playerSelection, computerSelection){
+    if(typeof playerSelection !== 'string'){
+        console.log("Numbers are not valid") 
+    }
+    if(playerSelection.toLowerCase() ==="rock" && computerSelection === "Rock"){
+        console.log("Rock ties with Rock");
+    }
+    if(playerSelection.toLowerCase() ==="rock" && computerSelection === "Paper"){
+        console.log("You lose! Rock loses to Paper");
+    }
+    if(playerSelection.toLowerCase() ==="rock" && computerSelection === "Scissors"){
+        console.log("You WIN! Rock smashes Scissors!");
+        return "Win";
+    }
+    if(playerSelection.toLowerCase() ==="paper" && computerSelection === "Rock"){
+        console.log("You WIN! Paper beats Rock");
+        return "Win";
+    }
+    if(playerSelection.toLowerCase() ==="paper" && computerSelection === "Paper"){
+        console.log("Paper ties with Paper");
+    }
+    if(playerSelection.toLowerCase() ==="paper" && computerSelection === "Scissors"){
+        console.log("You lose! Paper loses to Scissors");
+    }
+    if(playerSelection.toLowerCase() ==="scissors" && computerSelection === "Rock"){
+        console.log("You lose! Scissors lose to Rock");
+    }
+    if(playerSelection.toLowerCase() ==="scissors" && computerSelection === "Paper"){
+        console.log("You WIN! Scissors cut Paper")
+        return "Win";
+    }
+    if(playerSelection.toLowerCase() ==="scissors" && computerSelection === "Scissors"){
+        console.log("Scissors tie with Scissors")
+    }
+}
