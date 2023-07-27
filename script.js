@@ -44,3 +44,21 @@ function playRound(playerSelection, computerSelection){
         console.log("Scissors tie with Scissors")
     }
 }
+function game(){
+    let PlayerWinCounter = 0;
+    let ComputerWinCounter = 0;
+    for(let i = 0; i<5; i++){
+        let playerSelection = prompt("Enter Rock Paper or Scissors");
+        const computerSelection = getComputerChoice();
+        let result =playRound(playerSelection,computerSelection);
+        if (result == "Win"){
+            PlayerWinCounter++;
+        }else{
+            ComputerWinCounter++;
+        }
+        
+
+    }
+    console.log(`Player wins: ${PlayerWinCounter} \nComputer wins:${ComputerWinCounter}`)
+        
+}
