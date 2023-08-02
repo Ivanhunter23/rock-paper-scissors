@@ -10,21 +10,39 @@ function showResult(result,pSelection,cSelection){
     switch(result){
         case "Win":
         pScore++;
-        createP.textContent = `You WIN!${pSelection} beats ${cSelection}\nPlayer Score = ${pScore}\nComputer Score = ${cScore}`;
+        createP.textContent = `You WIN! ${pSelection} beats ${cSelection}\nPlayer Score = ${pScore}\nComputer Score = ${cScore}`;
         createP.style.color = "green";
+        createP.style.whiteSpace ="pre"; //Makes it so \n jumps line properly
         results.appendChild(createP);
+        if(pScore == 5){
+            let winP = document.createElement('p')
+            winP.textContent = `You WIN! Player wins \nPlayer Score = ${pScore}\nComputer Score = ${cScore}`;
+            winP.style.color = "green";
+            winP.style.whiteSpace ="pre"; //Makes it so \n jumps line properly
+            results.appendChild(winP);
+        }
         break;
 
         case "Loss":
         cScore++;
-        createP.textContent = `You LOSE!${cSelection} beats ${pSelection}\nPlayer Score = ${pScore}\nComputer Score = ${cScore}`;
+        createP.textContent = `You LOSE! ${cSelection} beats ${pSelection}\nPlayer Score = ${pScore}\nComputer Score = ${cScore}`;
         createP.style.color = "red";
+        createP.style.whiteSpace ="pre";
         results.appendChild(createP);
+        if(cScore == 5){
+            let winP = document.createElement('p')
+            winP.textContent = `You LOST! Computer won \nPlayer Score = ${pScore}\nComputer Score = ${cScore}`;
+            winP.style.color = "red";
+            winP.style.whiteSpace ="pre"; //Makes it so \n jumps line properly
+            results.appendChild(winP);
+        }
+        
         break;
 
         case "Tie":
         createP.textContent = `You TIED! ${pSelection} ties with ${cSelection}\nPlayer Score = ${pScore}\nComputer Score = ${cScore}`;
         createP.style.color = "grey";
+        createP.style.whiteSpace ="pre";
         results.appendChild(createP);
         break;
     }
@@ -34,11 +52,11 @@ buttons.forEach((button) => {
     // and for each one we add a 'click' listener
     button.addEventListener('click', () => {
         if(button.id === "rock"){
-            playRound("rock",getComputerChoice());
+            playRound("Rock",getComputerChoice());
         }else if(button.id === "paper"){
-            playRound("paper",getComputerChoice());
+            playRound("Paper",getComputerChoice());
         }else if(button.id === "scissors"){
-            playRound("scissors",getComputerChoice());
+            playRound("Scissors",getComputerChoice());
         }
     });
   });
@@ -48,41 +66,41 @@ function getComputerChoice(){
     let option = Math.floor(Math.random()* 3);
 
     if (option === 0){
-        return "rock";
+        return "Rock";
     }else if (option ===1) {
-        return "paper";
+        return "Paper";
     } else {
-        return "scissors";
+        return "Scissors";
     }
 }
 
 //Simulates a round of Rock Paper Scissors with the value from getComputerChoice() and a value which the player inputs
 function playRound(playerSelection, computerSelection){
-    if(playerSelection === "rock" && computerSelection === "rock"){
+    if(playerSelection === "Rock" && computerSelection === "Rock"){
         return showResult("Tie",playerSelection,computerSelection);
     }
-    else if(playerSelection === "rock" && computerSelection === "paper"){
+    else if(playerSelection === "Rock" && computerSelection === "Paper"){
         return showResult("Loss",playerSelection,computerSelection);        
     }
-    else if(playerSelection === "rock" && computerSelection === "scissors"){
+    else if(playerSelection === "Rock" && computerSelection === "Scissors"){
         return showResult("Win",playerSelection,computerSelection);        
     }
-    else if(playerSelection === "paper" && computerSelection === "rock"){
+    else if(playerSelection === "Paper" && computerSelection === "Rock"){
         return showResult("Win",playerSelection,computerSelection);        
     }
-    else if(playerSelection === "paper" && computerSelection === "paper"){
+    else if(playerSelection === "Paper" && computerSelection === "Paper"){
         return showResult("Tie",playerSelection,computerSelection);
     }
-    else if(playerSelection === "paper" && computerSelection === "scissors"){
+    else if(playerSelection === "Paper" && computerSelection === "Scissors"){
         return showResult("Loss",playerSelection,computerSelection);        
     }
-    else if(playerSelection === "scissors" && computerSelection === "rock"){
+    else if(playerSelection === "Scissors" && computerSelection === "Rock"){
         return showResult("Loss",playerSelection,computerSelection);        
     }
-    else if(playerSelection === "scissors" && computerSelection === "paper"){
+    else if(playerSelection === "Scissors" && computerSelection === "Paper"){
         return showResult("Win",playerSelection,computerSelection);        
     }
-    else if(playerSelection === "scissors" && computerSelection === "scissors"){
+    else if(playerSelection === "Scissors" && computerSelection === "Scissors"){
         return showResult("Tie",playerSelection,computerSelection);
     }
 }
