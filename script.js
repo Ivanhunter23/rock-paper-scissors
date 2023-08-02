@@ -15,11 +15,8 @@ function playRound(playerSelection, computerSelection){
     if(typeof playerSelection !== 'string'){
         console.log("Numbers are not valid") 
     }
-
     else if(playerSelection.toLowerCase() ==="rock" && computerSelection === "Rock"){
         console.log("Rock ties with Rock");
-        
-
     }
     else if(playerSelection.toLowerCase() ==="rock" && computerSelection === "Paper"){
         console.log("You lose! Rock loses to Paper");
@@ -54,6 +51,23 @@ function playRound(playerSelection, computerSelection){
         console.log("Scissors tie with Scissors")
     }
 }
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', () => {
+        if(button.id === "rock"){
+            playRound("rock",getComputerChoice());
+        }else if(button.id === "paper"){
+            playRound("paper",getComputerChoice());
+        }else if(button.id === "scissors"){
+            playRound("scissors",getComputerChoice());
+        }
+    });
+  });
+
+/*
 function game(){
     let PlayerWinCounter = 0;
     let ComputerWinCounter = 0;
@@ -70,5 +84,5 @@ function game(){
 
     }
     console.log(`Player wins: ${PlayerWinCounter} \nComputer wins:${ComputerWinCounter}`)
-        
 }
+*/
