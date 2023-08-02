@@ -1,0 +1,16 @@
+button{
+    background-color: white;
+    border-color: black;
+    color: black;
+    text-align: center;
+    padding: 80px 80px 80px 80px;
+    text-decoration:double;
+    display: inline-block;
+    font-size: 30px;
+}
+.button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
